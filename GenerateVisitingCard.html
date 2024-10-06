@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visiting Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hidden */
+        }
+        .card h2 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Visiting Card Generator</h2>
+    
+    <!-- Form for User Input -->
+    <div class="form-container">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <br><br>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" required>
+        <br><br>
+
+        <button onclick="generateCard()">Generate Visiting Card</button>
+    </div>
+
+    <!-- Container for the Generated Visiting Card -->
+    <div id="visitingCard" class="card">
+        <h2 id="cardName"></h2>
+        <p id="cardTitle"></p>
+        <p id="cardEmail"></p>
+        <p id="cardPhone"></p>
+    </div>
+
+    <!-- JavaScript for Generating the Visiting Card -->
+    <script>
+        const generateCard = () => {
+            // Get user input values
+            const name = document.querySelector("#name").value;
+            const title = document.querySelector("#title").value;
+            const email = document.querySelector("#email").value;
+            const phone = document.querySelector("#phone").value;
+
+            // Set the card content
+            document.querySelector("#cardName").textContent = name;
+            document.querySelector("#cardTitle").textContent = title;
+            document.querySelector("#cardEmail").textContent = email;
+            document.querySelector("#cardPhone").textContent = phone;
+
+            // Display the visiting card
+            document.querySelector("#visitingCard").style.display = "block";
+            document.querySelector("#visitingCard").style.backgroundColor = "skyblue"
+        };
+    </script>
+
+</body>
+</html>
