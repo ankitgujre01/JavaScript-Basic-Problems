@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box to Circle on Mouse Enter</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        #box {
+            width: 560px;
+            height: 700px;
+            background-color: #3498db;
+            transition: border-radius 0.5s ease; /* Smooth transition */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box" 
+         onmouseenter="convertToCircle()" 
+         onmouseleave="convertToBox()">
+    </div>
+
+    <!-- JavaScript Functions -->
+    <script>
+        // Function to change the box to a circle
+        function convertToCircle() {
+            document.querySelector("#box").style.borderRadius = "50%"; // Change to circle
+        }
+
+        // Function to change the circle back to a box
+        function convertToBox() {
+            document.querySelector("#box").style.borderRadius = "0%"; // Change back to box
+        }
+    </script>
+
+</body>
+</html>
