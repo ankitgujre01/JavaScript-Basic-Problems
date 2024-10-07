@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Salary Tax Calculator</h2>
+
+    <label for="salary">Enter Your Annual Salary (₹):</label>
+    <input type="number" id="salary" placeholder="Enter salary amount">
+
+    <!-- Button to calculate tax -->
+    <button onclick="calculateTax()">Calculate Tax</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    // Function to calculate tax based on salary
+    function calculateTax() {
+        const salary = document.querySelector("#salary").value;
+
+        // Result element where we will display the output
+        const resultElement = document.querySelector("#result");
+
+        // Check if salary input is valid
+        if (salary === '' || salary <= 0) {
+            resultElement.innerHTML = "<p>Please enter a valid salary amount.</p>";
+            return;
+        }
+
+        let tax = 0;
+
+        // Calculate tax based on the conditions
+        if (salary < 300000) {
+            tax = 0;
+            resultElement.innerHTML = `<p>Your salary is less than ₹3,00,000. You do not need to pay any tax.</p>`;
+        } else if (salary >= 300000 && salary < 750000) {
+            tax = (salary - 300000) * 0.10; // 10% tax on salary above ₹3,00,000
+            resultElement.innerHTML = `<p>Your taxable salary is ₹${(salary - 300000).toLocaleString()}.</p>
+                                       <p>Your tax is ₹${tax.toLocaleString()}.</p>`;
+        }else if ( salary >= 750000) {
+            tax = (salary - 750000) * 0.20; // 20% tax on salary above ₹7,50,000
+            resultElement.innerHTML = `<p>Your taxable salary is ₹${(salary - 750000).toLocaleString()}.</p>
+                                       <p>Your tax is ₹${tax.toLocaleString()}.</p>`;
+        } else {
+            resultElement.innerHTML = `<p>Your salary is ₹${salary.toLocaleString()}, and you are in a different tax bracket not covered by this program.</p>`;
+        }
+    }
+</script>
+
+</body>
+</html>
