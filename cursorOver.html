@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover Effect</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+        .container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        }
+        #image {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        z-index: 1;
+        }
+        #overlay {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        id="image"
+        src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp"
+        alt="Sample Image"/>
+
+    <div id="overlay" onmouseover="bringImageToFront()" onmouseout="sendImageToBack()">
+    </div>
+    </div>
+
+    <script>
+    function bringImageToFront() {
+        let image = document.querySelector("#image");
+        image.style.zIndex = "10";
+    }
+      function sendImageToBack() {
+        let image = document.querySelector("#image");
+        image.style.zIndex = "2";
+      }
+    </script>
+  </body>
+</html>

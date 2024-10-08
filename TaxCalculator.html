@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Salary Tax Calculator</h1>
+        <label for="salary">Enter Your Annual Salary :</label>
+        <input type="number" id="salary" placeholder="Enter salary amount">
+
+        <button onclick="calculateTax()">Calculate Tax</button>
+        <div class="result" id="result"></div>
+
+        <script>
+            function calculateTax(){
+                let salary = document.querySelector("#salary").value;
+                let resultElement = document.querySelector("#result");
+
+                if (salary === '' || salary <= 0) {
+                    resultElement.innerHTML = "<p>Please enter a valid salary amount.</p>";
+                    return;
+                }
+                let tax = 0;
+
+                if (salary < 300000) {
+                    tax = 0;
+                    resultElement.innerHTML = `<p>Your salary is less than ₹3,00,000. You do not need to pay any tax.</p>`;
+                } else if (salary >= 300000 && salary < 750000) {
+                    tax = (salary - 300000) * 0.10; // 10% tax on salary above ₹3,00,000
+                    resultElement.innerHTML = `<p>Your taxable salary is ₹${(salary - 300000).toLocaleString()}.</p>
+                    <p>Your tax is ₹${tax.toLocaleString()}.</p>`;
+                }else if ( salary >= 750000) {
+                    tax = (salary - 750000) * 0.20; // 20% tax on salary above ₹7,50,000
+                    resultElement.innerHTML = `<p>Your taxable salary is ₹${(salary - 750000).toLocaleString()}.</p>
+                    <p>Your tax is ₹${tax.toLocaleString()}.</p>`;
+                } else {
+                    resultElement.innerHTML = `<p>Your salary is ₹${salary.toLocaleString()}, and you are in a different tax bracket not covered by this program.</p>`;
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
